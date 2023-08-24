@@ -4,13 +4,13 @@ import { currentUser } from "@clerk/nextjs"
 async function Page() {
     const user= await currentUser();
 
-    const userInfo = {};
+    const userInfo:any = {};
 
-    const userData = {
+    const userData: any = {
          id:user?.id,
          objectId:userInfo?._id,
          username:userInfo?.username || user?.username,
-         name:userInfo?.name||user.firstName||"",
+         name:userInfo?.name||user?.firstName||"",
          bio:userInfo?.bio||"",
          image:userInfo?.image||user?.imageUrl,
     }
@@ -25,14 +25,13 @@ async function Page() {
               Complete your profile now to use Threads  
             </p>
 
-            <section className="mt-9 bg-dark-4 p-10">
+            
                 <AccountProfile 
                     user={userData}
                     btnTitle="Continue"
                 
                 />
 
-            </section>
         </main>
     )
 }
